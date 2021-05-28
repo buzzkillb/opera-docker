@@ -32,6 +32,6 @@ services:
     command: --genesis /data/mainnet.g --datadir /data --nat extip:1.1.1.1 --nousb --http --http.vhosts="*" --http.corsdomain="*" --ws --ws.origins="*" --http.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc"
     ports:
       - 5050:5050
+      - 18545:18545
       - 18546:18546
-      - 18547:18547
 ```
