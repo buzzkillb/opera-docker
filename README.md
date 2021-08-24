@@ -34,6 +34,8 @@ services:
       - 5050:5050
       - 18545:18545
       - 18546:18546
+      - 18547:18547
+      - 19090:19090
 ```
 ### docker-compose.yml (CF EMAIL GLOBAL TOKEN: traefik v2 forward rpc port, untested)  
 ```
@@ -42,7 +44,7 @@ version: "3.3"
 services:
 
   traefik:
-    image: "traefik:v2.4"
+    image: "traefik:v2.5.1"
     container_name: "traefik"
     command:
       #- "--log.level=DEBUG"
@@ -76,12 +78,16 @@ services:
       - 5050:5050
       - 18545:18545
       - 18546:18546
+      - 18547:18547
+      - 19090:19090
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.go-opera.rule=Host(`subdomain.example.com`)"
-      - "traefik.http.routers.go-opera.entrypoints=websecure"
-      - "traefik.http.routers.go-opera.tls.certresolver=myresolver"
-      - "traefik.http.services.go-opera.loadbalancer.server.port=18545"
+      - "traefik.http.routers.go-opera-websocket-https.rule=Host(`subdomain.example.com`) && PathPrefix(`/ws`)"
+      - "traefik.http.routers.go-opera-websocket-https.middlewares=admin-stripprefix"
+      - "traefik.http.middlewares.admin-stripprefix.stripprefix.prefixes=/ws"
+      - traefik.http.routers.go-opera-websocket-https.tls.certresolver=myresolver
+      - traefik.http.routers.go-opera-websocket-https.service=go-opera-websocket
+      - traefik.http.services.go-opera-websocket.loadbalancer.server.port=18546
+      - traefik.webservice.frontend.entryPoints=http,https,ws,wss
  ```
  
  ### docker-compose.yml (CF DNS TOKEN: traefik v2 forward rpc port, untested)  
@@ -100,7 +106,7 @@ version: "3.3"
 services:
 
   traefik:
-    image: "traefik:v2.4"
+    image: "traefik:v2.5.1"
     container_name: "traefik"
     command:
       #- "--log.level=DEBUG"
@@ -133,14 +139,22 @@ services:
       - 5050:5050
       - 18545:18545
       - 18546:18546
+      - 18547:18547
+      - 19090:19090
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.go-opera.rule=Host(`subdomain.example.com`)"
-      - "traefik.http.routers.go-opera.entrypoints=websecure"
-      - "traefik.http.routers.go-opera.tls.certresolver=myresolver"
-      - "traefik.http.services.go-opera.loadbalancer.server.port=18545"
+      - "traefik.http.routers.go-opera-websocket-https.rule=Host(`subdomain.example.com`) && PathPrefix(`/ws`)"
+      - "traefik.http.routers.go-opera-websocket-https.middlewares=admin-stripprefix"
+      - "traefik.http.middlewares.admin-stripprefix.stripprefix.prefixes=/ws"
+      - traefik.http.routers.go-opera-websocket-https.tls.certresolver=myresolver
+      - traefik.http.routers.go-opera-websocket-https.service=go-opera-websocket
+      - traefik.http.services.go-opera-websocket.loadbalancer.server.port=18546
+      - traefik.webservice.frontend.entryPoints=http,https,ws,wss
  ```
 Docker logs to watch index number  
 ```
 docker logs go-opera 2>&1 -f | grep "index"
+```
+go-opera help  
+```
+docker exec go-opera opera help
 ```
