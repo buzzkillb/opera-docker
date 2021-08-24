@@ -140,3 +140,7 @@ services:
       - "traefik.http.routers.go-opera.tls.certresolver=myresolver"
       - "traefik.http.services.go-opera.loadbalancer.server.port=18545"
  ```
+Docker logs to watch index number  
+```
+docker logs go-opera 2>&1 -f | grep "index"
+```
