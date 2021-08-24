@@ -29,7 +29,7 @@ services:
     container_name: "go-opera"
     volumes:
       - ~/opera:/data
-    command: --genesis /data/mainnet.g --datadir /data --nat extip:1.1.1.1 --nousb --http --http.vhosts="*" --http.corsdomain="*" --ws --ws.origins="*" --http.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc"
+    command: --genesis /data/mainnet.g --datadir /data --nat extip:1.1.1.1 --nousb --http --http.addr "0.0.0.0" --http.vhosts="*" --http.corsdomain="*" --ws --ws.addr "0.0.0.0" --ws.origins="*" --http.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc"
     ports:
       - 5050:5050
       - 18545:18545
@@ -71,7 +71,7 @@ services:
     container_name: "go-opera"
     volumes:
       - ~/opera:/data
-    command: --genesis /data/mainnet.g --datadir /data --nat extip:1.1.1.1 --nousb --http --http.vhosts="*" --http.corsdomain="*" --ws --ws.origins="*" --http.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc"
+    command: --genesis /data/mainnet.g --datadir /data --nat extip:1.1.1.1 --nousb --http --http.addr "0.0.0.0" --http.vhosts="*" --http.corsdomain="*" --ws --ws.addr "0.0.0.0" --ws.origins="*" --http.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc"
     ports:
       - 5050:5050
       - 18545:18545
@@ -128,7 +128,7 @@ services:
     container_name: "go-opera"
     volumes:
       - ~/opera:/data
-    command: --genesis /data/mainnet.g --datadir /data --nat extip:1.1.1.1 --nousb --http --http.vhosts="*" --http.corsdomain="*" --ws --ws.origins="*" --http.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc"
+    command: --genesis /data/mainnet.g --datadir /data --nat extip:1.1.1.1 --nousb --http --http.addr "0.0.0.0" --http.vhosts="*" --http.corsdomain="*" --ws --ws.addr "0.0.0.0" --ws.origins="*" --http.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc"
     ports:
       - 5050:5050
       - 18545:18545
