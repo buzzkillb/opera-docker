@@ -14,6 +14,10 @@ git clone https://github.com/buzzkillb/opera-docker
 cd opera-docker
 docker build -t opera .
 ```
+#### To switch to snapsync repo, swap this line in the Dockerfile after cloning and before building
+```
+RUN git clone -b release/1.1.0-rc.4 https://github.com/Fantom-foundation/go-opera.git /go-opera && \
+```
 ### Basic Docker Run Command
 ```
 docker run --name=go-opera --rm -t -v ~/opera:/data opera --genesis /data/mainnet.g --datadir /data --nousb
