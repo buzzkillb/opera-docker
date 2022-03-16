@@ -94,7 +94,8 @@ services:
 
 ```
 How to Generate CF DNS Token
-Cloudflare - Create Custom Token - Edit zone DNS
+My Profile -> API Tokens
+Create Custom Token - Edit zone DNS
 Zone:Zone Settings Read
 Zone:Zone Read
 Zone:DNS Edit
