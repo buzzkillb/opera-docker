@@ -14,7 +14,7 @@ RUN git clone https://github.com/Fantom-foundation/go-opera.git /go-opera && \
     make -C /go-opera opera
 
 # final image
-FROM golang:1.16.4-alpine3.13
+FROM golang:1.17.8-alpine3.15
 
 RUN mkdir -p /data
 
