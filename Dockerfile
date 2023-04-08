@@ -10,6 +10,8 @@ RUN apk add --update-cache \
     make
 
 RUN git clone https://github.com/Fantom-foundation/go-opera.git /go-opera && \
+    cd /go-opera && \
+    git checkout release/1.1.2-rc.6 && \
     chmod -R 755 /go-opera && \
     make -C /go-opera opera
 
