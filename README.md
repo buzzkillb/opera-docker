@@ -1,13 +1,6 @@
 # opera-docker
 Fantom go-opera docker  
-### Get genesis file and throw into a folder, using ~/opera for the datadir  
-```
-cd ~
-mkdir opera
-cd opera
-wget https://opera.fantom.network/mainnet.g
-cd ~
-```
+Run Private RPC locally or through Cloudflare with https and websockets using Traefik v2. Examples are for Pruned Snapsync node, last try January 2023, can run with 1tb ssd/nvme. Approx 800gb total storage used.  
 ### Build Docker Image Locally  
 ```
 git clone https://github.com/buzzkillb/opera-docker
